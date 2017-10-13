@@ -8,5 +8,16 @@ namespace BankAccount
 {
     class Client
     {
+        //Fields
+
+        //Properties
+
+        //Constructors
+        public Client()
+        {
+            //default constructor
+        }
+
+        //Methods
     }
 }

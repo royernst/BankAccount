@@ -10,19 +10,14 @@ namespace BankAccount
     {
         //Fields
         protected string accountNumber;
-        protected double accountBalance;
+        protected static double checkingBalance;
+        protected static double savingsBalance;
         protected string accountType;
+        protected static double totalBalance = checkingBalance + savingsBalance;
 
         //Properties
-        public string AccountNumber
-        {
-            get { return this.accountNumber; }
-        }
-
-        public double AccountBalance
-        {
-            get { return this.accountBalance; }
-        }
+        public abstract string AccountNumber
+        { get; set; }
 
         //Constructors
         public Account()
@@ -36,29 +31,30 @@ namespace BankAccount
         public void AccountInfo()
         {
             Console.WriteLine("Account number: {0}", accountNumber);
+            CurrentBalance();
         }
-            
+
         //Check current balance
-        public void CurrentBalance()
+        public virtual void CurrentBalance()
         {
-            Console.WriteLine("Your current balance is ${0}.", accountBalance);
+            Console.WriteLine("Your current balance is ${0}.", totalBalance);
         }
 
         //Transactions
         protected virtual void Withdrawal(double transactionAmount)
         {
             Math.Round(transactionAmount, 2, MidpointRounding.AwayFromZero);
-            accountBalance -= transactionAmount;
-            Math.Round(accountBalance, 2, MidpointRounding.AwayFromZero);
-            Console.WriteLine("Withdrew ${0}.", transactionAmount);
+            totalBalance -= transactionAmount;
+            Math.Round(totalBalance, 2, MidpointRounding.AwayFromZero);
+            Console.WriteLine("Deposited ${0}.", transactionAmount);
             CurrentBalance();
         }
 
-        protected void Deposit(double transactionAmount)
+        protected virtual void Deposit(double transactionAmount)
         {
             Math.Round(transactionAmount, 2, MidpointRounding.AwayFromZero);
-            accountBalance += transactionAmount;
-            Math.Round(accountBalance, 2, MidpointRounding.AwayFromZero);
+            totalBalance += transactionAmount;
+            Math.Round(totalBalance, 2, MidpointRounding.AwayFromZero);
             Console.WriteLine("Deposited ${0}.", transactionAmount);
             CurrentBalance();
         }

@@ -10,6 +10,9 @@ namespace BankAccount
     {
         static void Main(string[] args)
         {
+
+            Savings savings = new Savings("goatcheese");
+            Console.WriteLine(savings.AccountNumber);
         }
     }
 }
