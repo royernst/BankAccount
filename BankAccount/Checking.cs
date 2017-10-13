@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace BankAccount
 {
-    class Checking
+    class Checking : Account
     {
+        //Fields
+        //Properties
+        //Constructors
+        public Checking()
+        {
+
+        }
+
+        //Methods
     }
 }

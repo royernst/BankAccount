@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace BankAccount
 {
-    class Savings
+    class Savings : Account
     {
+        //Fields
+        //Properties
+        //Constructors
+        public Savings()
+        {
+
+        }
+
+        //Methods
+        protected override void Withdrawal(int transactionAmount)
+        {
+            accountBalance -= transactionAmount;
+            CurrentBalance();
+        }
     }
 }
