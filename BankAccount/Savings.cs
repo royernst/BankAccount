@@ -9,7 +9,7 @@ namespace BankAccount
     class Savings : Account
     {
         //Fields
-        private int minBalance = 0;
+        private double minBalance = 10d;
         
         //Properties
         public override string AccountNumber
@@ -45,23 +45,22 @@ namespace BankAccount
         }
 
         //transactions
-        public override void Withdrawal(double withdrawalAmount)
+        public override void Withdrawal(double transactionAmount)
         {
+            double withdrawalAmount = transactionAmount;
             Math.Round(withdrawalAmount, 2, MidpointRounding.AwayFromZero);
-            do
+            while ((accountBalance - withdrawalAmount) < minBalance)
             {
-                if (withdrawalAmount <= (accountBalance - minBalance))
-                {
-                    accountBalance -= withdrawalAmount;
-                    Math.Round(accountBalance, 2, MidpointRounding.AwayFromZero);
-                    Console.WriteLine("Withdrew ${0}.", withdrawalAmount);
-                }
-                else
-                {
-                    Console.WriteLine("Invalid amount.  Cannot withdraw more than ${0}.", minBalance);
-                }
-            } while (withdrawalAmount > accountBalance);
+                Console.WriteLine("\nInvalid amount entered.  Balance cannot go below ${0}.", minBalance);
+                CheckBalance();
+                Console.Write("\nPlease enter a valid amount.  ");
+                withdrawalAmount = double.Parse(Console.ReadLine().Trim());
+            }
+            accountBalance -= withdrawalAmount;
+            Math.Round(accountBalance, 2, MidpointRounding.AwayFromZero);
+            Console.WriteLine("\nWithdrew ${0}.", withdrawalAmount);
             CheckBalance();
+             
         }
     }
 }

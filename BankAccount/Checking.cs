@@ -40,22 +40,5 @@ namespace BankAccount
             //just putting this here because we're required to...
         }
 
-
-        ////If overdraft enabled, will withdraw money from savings in case of overdraw
-        ////Else, checking account will go negative
-        ////Only applies to account withdrawals from checking, not savings
-        //private void Overdraft(double transactionAmount)
-        //{
-        //    if (overdraft == true)
-        //    {
-        //        checkingBalance -= transactionAmount;
-        //        savingsBalance =- Math.Abs(checkingBalance);
-        //        checkingBalance = 0;
-                
-        //    } else
-        //    {
-        //        checkingBalance -= transactionAmount;
-        //    }
-        //}
     }
 }
