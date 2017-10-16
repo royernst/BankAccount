@@ -22,6 +22,7 @@ namespace BankAccount
 
             //Welcomes user and prompts them to select an option
             Console.WriteLine("Welcome to the Bank of Knox remote account program.");
+            Console.WriteLine("\nCurrently logged in under {0}.", user.UserName);
             Console.WriteLine("\nPlease select an option below via the corresponding number:");
             Console.WriteLine();
             //main menu
@@ -48,8 +49,8 @@ namespace BankAccount
                     do
                     {
                         Console.WriteLine("\nPlease choose the account you would like to check: ");
-                        Console.WriteLine("a. Checking");
-                        Console.WriteLine("b. Savings");
+                        Console.WriteLine("a. Checking Account");
+                        Console.WriteLine("b. Savings Account");
                         Console.WriteLine("c. Main Menu");
                         Console.WriteLine();
                         subMenu = char.Parse(Console.ReadLine().Trim().ToLower());
@@ -74,8 +75,8 @@ namespace BankAccount
                     do
                     {
                         Console.WriteLine("\nPlease choose the account you would like to deposit funds to: ");
-                        Console.WriteLine("a. Checking");
-                        Console.WriteLine("b. Savings");
+                        Console.WriteLine("a. Checking Account");
+                        Console.WriteLine("b. Savings Account");
                         Console.WriteLine("c. Main Menu");
                         Console.WriteLine();
                         subMenu = char.Parse(Console.ReadLine().Trim().ToLower());
@@ -101,8 +102,8 @@ namespace BankAccount
                     do
                     {
                         Console.WriteLine("\nPlease choose the account you would like to withdraw funds from: ");
-                        Console.WriteLine("a. Checking");
-                        Console.WriteLine("b. Savings");
+                        Console.WriteLine("a. Checking Account");
+                        Console.WriteLine("b. Savings Account");
                         Console.WriteLine("c. Main Menu");
                         Console.WriteLine();
                         subMenu = char.Parse(Console.ReadLine().Trim().ToLower());
