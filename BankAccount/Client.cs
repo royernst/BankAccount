@@ -8,8 +8,14 @@ namespace BankAccount
 {
     class Client
     {
+        //Creating checking and savings accounts for this client
+        
+        
         //Fields
-
+        private string name = "";
+        private double checkingBalance = Checking
+        
+        
         //Properties
 
         //Constructors
@@ -19,5 +25,9 @@ namespace BankAccount
         }
 
         //Methods
+        public void ClientInfo()
+        {
+
+        }
     }
 }

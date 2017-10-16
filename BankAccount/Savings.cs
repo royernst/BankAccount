@@ -10,7 +10,7 @@ namespace BankAccount
     {
         //Fields
         private int minBalance = 0;
-        string accountNumber = "value";
+        
         //Properties
         public override string AccountNumber
         {
@@ -19,50 +19,49 @@ namespace BankAccount
         }
 
         //Constructors
+        //default constructor
         public Savings()
         {
-
+            accountType = "Savings";
         }
 
-        public Savings(string accountNumber)
+        //constructor to populate class fields
+        public Savings(string accountNumber, double accountBalance)
         {
             this.accountNumber = accountNumber;
+            this.accountBalance = accountBalance;
+            this.accountType = "Savings";
         }
 
         //Methods
-        public override void CurrentBalance()
+        //account info
+        
+
+        //check current balance
+
+        public override void ProjectRequirement()
         {
-            Console.WriteLine("Your current balance is ${0}.", savingsBalance);
+            //just putting this here because we're required to...
         }
+
+        //transactions
         protected override void Withdrawal(double transactionAmount)
         {
             Math.Round(transactionAmount, 2, MidpointRounding.AwayFromZero);
             do
             {
-                if (transactionAmount <= savingsBalance)
+                if (transactionAmount <= (accountBalance - minBalance))
                 {
-                    savingsBalance -= transactionAmount;
-                    Math.Round(savingsBalance, 2, MidpointRounding.AwayFromZero);
+                    accountBalance -= transactionAmount;
+                    Math.Round(accountBalance, 2, MidpointRounding.AwayFromZero);
                     Console.WriteLine("Deposited ${0}.", transactionAmount);
                 }
                 else
                 {
                     Console.WriteLine("Invalid amount.  Cannot withdraw more than ${0}.", minBalance);
                 }
-            } while (transactionAmount > savingsBalance);
-
-
-
-            CurrentBalance();
-        }
-
-        protected override void Deposit(double transactionAmount)
-        {
-            Math.Round(transactionAmount, 2, MidpointRounding.AwayFromZero);
-            savingsBalance += transactionAmount;
-            Math.Round(savingsBalance, 2, MidpointRounding.AwayFromZero);
-            Console.WriteLine("Deposited ${0}.", transactionAmount);
-            CurrentBalance();
+            } while (transactionAmount > accountBalance);
+            CheckBalance();
         }
     }
 }

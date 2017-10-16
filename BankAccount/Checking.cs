@@ -9,7 +9,7 @@ namespace BankAccount
     class Checking : Account
     {
         //Fields
-        private bool overdraft = false;
+        //private bool overdraft = false;
 
         //Properties
         public override string AccountNumber
@@ -19,45 +19,43 @@ namespace BankAccount
         }
 
         //Constructors
+        //default constructor
         public Checking()
         {
-
+            this.accountType = "Checking";
         }
+
+        //constructor to populate class fields
+        public Checking(string accountNumber, double accountBalance)
+        {
+        this.accountNumber = accountNumber;
+        this.accountBalance = accountBalance;
+        this.accountType = "Checking";
+        }
+
 
         //Methods
-        public override void CurrentBalance()
+        public override void ProjectRequirement()
         {
-            Console.WriteLine("Your current balance is ${0}.", checkingBalance);
-        }
-        protected override void Withdrawal(double transactionAmount)
-        {
-            Math.Round(transactionAmount, 2, MidpointRounding.AwayFromZero);
-            checkingBalance -= transactionAmount;
-            Math.Round(checkingBalance, 2, MidpointRounding.AwayFromZero);
-            Console.WriteLine("Deposited ${0}.", transactionAmount);
-            CurrentBalance();
+            //just putting this here because we're required to...
         }
 
-        protected override void Deposit(double transactionAmount)
-        {
-            Math.Round(transactionAmount, 2, MidpointRounding.AwayFromZero);
-            checkingBalance += transactionAmount;
-            Math.Round(checkingBalance, 2, MidpointRounding.AwayFromZero);
-            Console.WriteLine("Deposited ${0}.", transactionAmount);
-            CurrentBalance();
-        }
 
-        private void Overdraft()
-        {
-            if (overdraft = true)
-            {
-                savingsBalance =- Math.Abs(checkingBalance);
-            }
-            else
-            {
-                Console.WriteLine("Overdraft protection is not enabled.");
-
-            }
-        }
+        ////If overdraft enabled, will withdraw money from savings in case of overdraw
+        ////Else, checking account will go negative
+        ////Only applies to account withdrawals from checking, not savings
+        //private void Overdraft(double transactionAmount)
+        //{
+        //    if (overdraft == true)
+        //    {
+        //        checkingBalance -= transactionAmount;
+        //        savingsBalance =- Math.Abs(checkingBalance);
+        //        checkingBalance = 0;
+                
+        //    } else
+        //    {
+        //        checkingBalance -= transactionAmount;
+        //    }
+        //}
     }
 }
