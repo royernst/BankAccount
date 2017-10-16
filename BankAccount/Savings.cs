@@ -45,22 +45,22 @@ namespace BankAccount
         }
 
         //transactions
-        protected override void Withdrawal(double transactionAmount)
+        public override void Withdrawal(double withdrawalAmount)
         {
-            Math.Round(transactionAmount, 2, MidpointRounding.AwayFromZero);
+            Math.Round(withdrawalAmount, 2, MidpointRounding.AwayFromZero);
             do
             {
-                if (transactionAmount <= (accountBalance - minBalance))
+                if (withdrawalAmount <= (accountBalance - minBalance))
                 {
-                    accountBalance -= transactionAmount;
+                    accountBalance -= withdrawalAmount;
                     Math.Round(accountBalance, 2, MidpointRounding.AwayFromZero);
-                    Console.WriteLine("Deposited ${0}.", transactionAmount);
+                    Console.WriteLine("Withdrew ${0}.", withdrawalAmount);
                 }
                 else
                 {
                     Console.WriteLine("Invalid amount.  Cannot withdraw more than ${0}.", minBalance);
                 }
-            } while (transactionAmount > accountBalance);
+            } while (withdrawalAmount > accountBalance);
             CheckBalance();
         }
     }

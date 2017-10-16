@@ -31,6 +31,7 @@ namespace BankAccount
         //View account information
         protected void AccountInfo()
         {
+            Console.WriteLine();//intentionally left blank
             Console.WriteLine("Account Number: {0}", accountNumber);
             Console.WriteLine("Account Type: {0}", accountType);
             CheckBalance();
@@ -39,27 +40,37 @@ namespace BankAccount
         //Check current balance
         public void CheckBalance()
         {
-            Console.WriteLine("Current Balance: {0}", accountBalance);
+            if (accountBalance < 0)
+            {
+                Console.WriteLine();//intentionally left blank
+                Console.WriteLine("Account overdrawn.  Please deposit more funds");
+                Console.WriteLine("Current Balance: ${0}", Math.Round(accountBalance, 2));
+            }
+            else
+            {
+                Console.WriteLine();//intentionally left blank
+                Console.WriteLine("Current Balance: ${0}", Math.Round(accountBalance, 2));
+            }
         }
 
         //Transactions
         //Withdrawal
-        protected virtual void Withdrawal(double transactionAmount)
+        public virtual void Withdrawal(double withdrawalAmount)
         {
-            Math.Round(transactionAmount, 2, MidpointRounding.AwayFromZero);
-            accountBalance -= transactionAmount;
+            Math.Round(withdrawalAmount, 2, MidpointRounding.AwayFromZero);
+            accountBalance -= withdrawalAmount;
             Math.Round(accountBalance, 2, MidpointRounding.AwayFromZero);
-            Console.WriteLine("Withdrew ${0}.", transactionAmount);
+            Console.WriteLine("\nWithdrew ${0}.", withdrawalAmount);
             CheckBalance();
         }
 
         //Deposit
-        protected void Deposit(double transactionAmount)
+        public void Deposit(double depositAmount)
         {
-            Math.Round(transactionAmount, 2, MidpointRounding.AwayFromZero);
-            accountBalance += transactionAmount;
+            Math.Round(depositAmount, 2, MidpointRounding.AwayFromZero);
+            accountBalance += depositAmount;
             Math.Round(accountBalance, 2, MidpointRounding.AwayFromZero);
-            Console.WriteLine("Deposited ${0}.", transactionAmount);
+            Console.WriteLine("\nDeposited ${0}.", depositAmount);
             CheckBalance();
         }
     }
